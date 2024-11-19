@@ -44,6 +44,7 @@ import { ChainlitContext } from './context';
 import type { IToken } from './useChatData';
 
 const useChatSession = () => {
+  console.log('running v3');
   const client = useContext(ChainlitContext);
   const sessionId = useRecoilValue(sessionIdState);
 
@@ -81,6 +82,7 @@ const useChatSession = () => {
 
       const socket = io(uri, {
         path,
+        withCredentials: true,
         extraHeaders: {
           Authorization: accessToken || '',
           'X-Chainlit-Client-Type': client.type,
